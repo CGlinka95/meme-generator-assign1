@@ -13,56 +13,12 @@ window.addEventListener('load', function(){
     const warning = document.querySelector(".warning");
     
     memeGenerator.addEventListener("submit", function(e){
-        e.preventDefault()
-
-        // Variable declarations
-        let memeSelect = Option(imageSelect.value.trim());
-        let topTextInput = textContent(topText.value.trim());
-        let bottomTextInput = textContent(bottomText.value.trim());
-
-        // **********Image validation***********
-        if(isNaN(memeSelect)) {
-            warning.classList.remove('hide')
-            warning.querySelector('span').textContent = "A selection is required"
-        }
-        else {
-            warning.classList.add('hide');
-            memeDisplay.value = memeSelect
-        }
-
-        // **********topText validation***********
-        if(isNaN(topTextInput)) {
-            warning.classList.remove('hide')
-            warning.querySelector('span').textContent = "An input is required"
-        }
-        else {
-            warning.classList.add('hide');
-            topTextDisplay.value = topTextInput
-        }
-
-        // **********bottomText validation***********
-        if(isNaN(bottomTextInput)) {
-            warning.classList.remove('hide')
-            warning.querySelector('span').textContent = "An input is required"
-        }
-        else {
-            warning.classList.add('hide');
-            bottomTextDisplay.value = bottomTextInput
-        }
-
-        // Capture user input(topText)?
-        topText.addEventListener('input', function(e){
-            warning.classList.add('hide')
-        })
-        // Focus cursor?
-        topText.addEventListener('focus', function(e){
-            warning.classList.add('hide')
-            e.target.value=""
-        })
-
-        // Capture user input(bottomText)?
-        bottomText.addEventListener('input', function(e){
-            warning.classList.add('hide')
-        })
+        e.preventDefault()  
+        const memeInput = imageSelect.value
+        const topTextInput = topText.value
+        const bottomTextInput = bottomText.value
+        memeDisplay.value = memeInput;
+        topTextDisplay.textContent = topTextInput;
+        bottomTextDisplay.textContent = bottomTextInput;
     })
 })
