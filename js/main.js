@@ -1,24 +1,47 @@
 // Enter your JavaScript for the solution here...
-window.addEventListener('load', function(){
-    const memeGenerator = document.querySelector('form')
-    const imageSelect = document.querySelector('select')
-    const topText = document.querySelector("input")
-    const bottomText = document.querySelector(".memeBottomText")
-    const generateButton = document.querySelector('.submit')
-    const resetButton = document.querySelector('.reset')
-    const memeDisplay = document.querySelector('.meme-display')
-    const topTextDisplay = document.querySelector('.top-text')
-    const bottomTextDisplay = document.querySelector('.bottom-text')
-    // ASK ABOUT THE BELOW REFERENCE VARIABLE!!!
-    const warning = document.querySelector(".warning");
+
+document.querySelector('form')
     
-    memeGenerator.addEventListener("submit", function(e){
-        e.preventDefault()  
-        const memeInput = imageSelect.value
-        const topTextInput = topText.value
-        const bottomTextInput = bottomText.value
-        memeDisplay.value = memeInput;
-        topTextDisplay.textContent = topTextInput;
-        bottomTextDisplay.textContent = bottomTextInput;
-    })
-})
+.addEventListener("submit", function(e){
+    e.preventDefault()  
+    const memeImageChoice = e.target.memeImage.value
+    const getTopText = e.target.memeTopText.value
+    const getBottomText = e.target.memeBottomText.value
+    let errorError = false
+
+    function memeImageDisplay(){
+        if(memeImageChoice === ""){
+            const warning = document.querySelector('.error')
+            warning.textContent = "You must enter something"
+            return errorError = true;
+        }else{
+            let getImageChoice = document.querySelector("img")
+            getImageChoice.src = "./img/" + memeImageChoice + ".png"
+        }
+    }
+
+    function textDisplay(){
+        if(getTopText === "" || getBottomText === ""){
+            const warning = document.querySelector('.error')
+            warning.textContent = "You must enter something"
+            return errorError = true;
+        }else{
+            let topTextDisplay = document.querySelector('.top-text').innerHTML
+            let bottomTextDisplay = document.querySelector('.bottom-text').innerHTML
+            topTextDisplay = getTopText;
+            bottomTextDisplay = getBottomText;
+        }
+    }
+
+    function errorFlag(){
+        if(errorError === false){
+            memeImageDisplay();
+            textDisplay();
+        }
+    }
+
+    errorFlag();
+});
+
+    
+
