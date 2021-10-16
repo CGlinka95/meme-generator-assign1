@@ -12,7 +12,7 @@ document.querySelector('form')
     function memeImageDisplay(){
         if(memeImageChoice === ""){
             const warning = document.querySelector('.error')
-            warning.textContent = "You must enter something"
+            warning.textContent = "You must select an image"
             return errorError = true;
         }else{
             let getImageChoice = document.querySelector("img")
@@ -23,13 +23,14 @@ document.querySelector('form')
     function textDisplay(){
         if(getTopText === "" || getBottomText === ""){
             const warning = document.querySelector('.error')
-            warning.textContent = "You must enter something"
+            warning.textContent = "You must enter something in both input fields"
             return errorError = true;
         }else{
-            let topTextDisplay = document.querySelector('.top-text').innerHTML
-            let bottomTextDisplay = document.querySelector('.bottom-text').innerHTML
-            topTextDisplay = getTopText;
-            bottomTextDisplay = getBottomText;
+            function updateInnerHTML (selector, newValue){
+                document.querySelector(selector).innerHTML = newValue;
+            }
+            updateInnerHTML('.top-text', getTopText);
+            updateInnerHTML('.bottom-text', getBottomText);
         }
     }
 
@@ -41,7 +42,7 @@ document.querySelector('form')
     }
 
     errorFlag();
-});
+})
 
     
 
