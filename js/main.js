@@ -1,7 +1,6 @@
 // Enter your JavaScript for the solution here...
 
 document.querySelector('form')
-    
 .addEventListener("submit", function(e){
     e.preventDefault()  
     const memeImageChoice = e.target.memeImage.value
@@ -41,8 +40,10 @@ document.querySelector('form')
         }
     }
 
+    function resetForm(){
+        document.getElementById("meme-form").reset();
+    }
+
     errorFlag();
+    resetForm();
 })
-
-    
-
